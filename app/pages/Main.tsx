@@ -1,6 +1,7 @@
 import { NavigationComponent } from "../components/NavigationComponent";
 import { PageHeaderComponent } from "../components/PageHeaderComponent";
 import darkSort from "../assets/images/icon-sort-dark.svg";
+import { CardComponent } from "~/components/CardComponent";
 export function Main() {
   return (
     <div className="flex">
@@ -16,6 +17,10 @@ export function Main() {
               <span className="dark:text-white">Sort by</span>
             </button>
           </PageHeaderComponent>
+
+          <div className="mt-6">
+            <CardComponent />
+          </div>
         </section>
       </main>
     </div>
