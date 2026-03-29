@@ -1,5 +1,16 @@
 @import "tailwindcss";
 
+.dark{
+  --color-neutral-900: #001414;
+  --color-neutral-800: #001F1F;
+  --color-neutral-600: #002E2D;
+  --color-neutral-500: #004241;
+  --color-neutral-400: #004746;
+  --color-neutral-300: #00706E;
+  --color-neutral-100: #B1B9B9;
+}
+
+
 @theme {
   --font-sans: "Manrope", ui-sans-serif, system-ui, sans-serif,
     "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
@@ -20,7 +31,6 @@
 
 html,
 body {
-  @apply bg-neutral-100 dark:bg-neutral-900;
   @media (prefers-color-scheme: dark) {
     --color-neutral-900: #001414;
     --color-neutral-800: #001F1F;
