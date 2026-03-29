@@ -2,12 +2,11 @@ import { NavigationComponent } from "../components/NavigationComponent";
 import { PageHeaderComponent } from "../components/PageHeaderComponent";
 import darkSort from "../assets/images/icon-sort-dark.svg";
 import { CardComponent } from "~/components/CardComponent";
+import { SidebarComponent } from "~/components/SidebarComponent";
 export function Main() {
   return (
     <div className="flex">
-      <aside className="min-w-74 hidden md:block bg-amber-600 h-screen px-4"> 
-        SIDEBAR
-      </aside>
+      <SidebarComponent />
       <main className="w-full">
         <NavigationComponent />
         <section className="px-8 py-9">
