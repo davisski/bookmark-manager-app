@@ -1,3 +1,4 @@
+import { NavigationComponent } from "../components/NavigationComponent";
 export function Main() {
   return (
     <div className="flex">
@@ -5,7 +6,7 @@ export function Main() {
         SIDEBAR
       </aside>
       <main className="w-full">
-        <nav className="px-8 bg-amber-900 h-19.5 w-full">NAV</nav>
+        <NavigationComponent />
         <section className="px-8">
             CONTENT
         </section>
