@@ -1,4 +1,6 @@
 import { NavigationComponent } from "../components/NavigationComponent";
+import { PageHeaderComponent } from "../components/PageHeaderComponent";
+import darkSort from "../assets/images/icon-sort-dark.svg";
 export function Main() {
   return (
     <div className="flex">
@@ -7,8 +9,13 @@ export function Main() {
       </aside>
       <main className="w-full">
         <NavigationComponent />
-        <section className="px-8">
-            CONTENT
+        <section className="px-8 py-9">
+          <PageHeaderComponent title="All bookmarks">
+            <button className="border rounded-lg flex items-center justify-center w-26.75 h-10.5 border-neutral-300 dark:bg-teal-700 gap-1">
+              <img src={darkSort} alt="Sort by" />
+              <span className="dark:text-white">Sort by</span>
+            </button>
+          </PageHeaderComponent>
         </section>
       </main>
     </div>
