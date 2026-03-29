@@ -1,7 +1,15 @@
-export function Welcome() {
+export function Main() {
   return (
-    <div className="flex flex-col items-center justify-center gap-6">
-      Bookmark manager
+    <div className="flex">
+      <aside className="min-w-74 hidden md:block bg-amber-600 h-screen px-4"> 
+        SIDEBAR
+      </aside>
+      <main className="w-full">
+        <nav className="px-8 bg-amber-900 h-19.5 w-full">NAV</nav>
+        <section className="px-8">
+            CONTENT
+        </section>
+      </main>
     </div>
   );
 }
