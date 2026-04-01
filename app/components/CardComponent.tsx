@@ -21,8 +21,8 @@ export const CardComponent = ({ bookmark }: { bookmark: any }) => {
     }, [tags]);
 
   return (
-    <div className="max-w-86.5 w-full min-w-84 min-h-68 rounded-lg dark:bg-neutral-800">
-        <div className="p-4">
+    <div className="max-w-86.5 w-full min-w-84 min-h-68 rounded-lg flex flex-col dark:bg-neutral-800">
+        <div className="p-4 grow">
             <div className="flex justify-between border-b border-neutral-500 pb-4">
                 <div className="flex gap-3 items-start">
                     <img className='w-11 h-11 rounded-lg' src={image} alt={bookmark.title} />
@@ -48,7 +48,7 @@ export const CardComponent = ({ bookmark }: { bookmark: any }) => {
             </div>
         </div>
 
-        <div className="border-t px-4 py-3 dark:border-neutral-500 w-full flex justify-between items-center">
+        <div className="border-t px-4 py-3 dark:border-neutral-500 w-full min-h-10.25 max-h-10.25 h-full flex justify-between items-center">
             <div className="flex gap-4">
                 <div className="flex items-center gap-1.5">
                     <img className='w-3 h-3' src={darkEye} alt="View" />
