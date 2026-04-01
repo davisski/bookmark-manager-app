@@ -4,8 +4,8 @@ import avatar from "../assets/images/avatar.png";
 import darkAdd from "../assets/images/icon-add-dark.svg";
 export const NavigationComponent = () => {
   return (
-    <nav className="px-8 border-b z-10 fixed dark:border-neutral-500 dark:bg-neutral-800 h-19.5 w-[80%] flex items-center">
-        <div className="flex items-center justify-between w-[80%]">
+    <nav className="px-8 border-b z-10 fixed dark:border-neutral-500 dark:bg-neutral-800 h-19.5 flex items-center w-[calc(100vw-var(--sidebar-width))]">
+        <div className="flex items-center justify-between w-[calc(100vw-var(--sidebar-width))]">
             <div className="flex items-center gap-4">
                 <button className="w-11 h-11 flex md:hidden items-center justify-center border dark:border-neutral-400 rounded-sm dark:bg-neutral-800">
                     <img src={darkHamburger} alt="Menu" />
