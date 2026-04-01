@@ -1,5 +1,9 @@
 @import "tailwindcss";
 
+:root{
+  --sidebar-width: 296px;
+}
+
 .dark{
   --color-neutral-900: #001414;
   --color-neutral-800: #001F1F;
