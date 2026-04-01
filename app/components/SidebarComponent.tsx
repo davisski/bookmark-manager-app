@@ -1,6 +1,7 @@
 import logoDark from '../assets/images/logo-dark-theme.svg';
 import darkHome from '../assets/images/icon-home-dark.svg';
 import darkArhive from '../assets/images/icon-archive-dark.svg';
+import { CountComponent } from './CountComponent';
 export const SidebarComponent = () => {
   return (
     <aside className="min-w-(--sidebar-width) hidden md:flex fixed dark:bg-neutral-800 flex-col h-screen px-4 border-r dark:border-neutral-500 gap-4">
@@ -34,9 +35,7 @@ export const SidebarComponent = () => {
                             relative cursor-pointer' />
                         <label htmlFor="tag1" className='text-sm dark:text-neutral-100'>AI</label>
                     </div>
-                    <div className='min-w-5.75 px-2 py-0.5 h-5.75 rounded-full border border-neutral-500 flex items-center justify-center'>
-                        <span className='dark:text-neutral-100 text-[12px]'>6</span>
-                    </div>
+                    <CountComponent count={26} />
                 </li>
                 <li className='flex justify-between'>
                     <div className='flex items-center gap-2 w-full'>
@@ -45,10 +44,8 @@ export const SidebarComponent = () => {
                             relative cursor-pointer' />
                         <label htmlFor="tag2" className='text-sm dark:text-neutral-100'>Community</label>
                     </div>
-                    <div className='min-w-5.75 px-2 py-0.5 h-5.75 rounded-full border border-neutral-500 flex items-center justify-center'>
-                        <span className='dark:text-neutral-100 text-[12px]'>1</span>
-                    </div>
-                </li> 
+                    <CountComponent count={6} />
+                </li>
             </ul>
         </div>
     </aside>
