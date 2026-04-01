@@ -1,28 +1,28 @@
 import { NavigationComponent } from "../components/NavigationComponent";
 import { PageHeaderComponent } from "../components/PageHeaderComponent";
 import darkSort from "../assets/images/icon-sort-dark.svg";
-import { CardComponent } from "~/components/CardComponent";
 import { SidebarComponent } from "~/components/SidebarComponent";
+import { BookmarkGridComponent } from "~/components/BookmarkGridComponent";
 export function Main() {
   return (
-    <div className="flex">
+    <>
       <SidebarComponent />
-      <main className="w-full">
+      <main className="ml-0 md:ml-74">
         <NavigationComponent />
-        <section className="px-8 py-9">
+        <section className="px-8 pb-9 pt-28.5">
           <PageHeaderComponent title="All bookmarks">
-            <button className="border rounded-lg flex items-center justify-center w-26.75 h-10.5 border-neutral-300 dark:bg-teal-700 gap-1">
+            <button className="border fixed right-10 top-28 cursor-pointer rounded-lg flex items-center justify-center w-26.75 h-10.5 border-neutral-300 dark:bg-teal-700 gap-1">
               <img src={darkSort} alt="Sort by" />
               <span className="dark:text-white">Sort by</span>
             </button>
           </PageHeaderComponent>
 
           <div className="mt-6">
-            <CardComponent />
+            <BookmarkGridComponent />
           </div>
         </section>
       </main>
-    </div>
+    </>
   );
 }
 

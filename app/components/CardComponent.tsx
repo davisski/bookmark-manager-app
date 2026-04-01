@@ -2,19 +2,33 @@ import darkEye from '../assets/images/icon-eye-dark.svg';
 import darkClock from '../assets/images/icon-clock-dark.svg';
 import darkCalendar from '../assets/images/icon-calendar-dark.svg';
 import darkPin from '../assets/images/icon-pin-dark.svg';
-import frontendMentorFavicon from '../assets/images/favicon-frontend-mentor.png';
+import { icons } from '~/utils/icons';
 import darkDots from '../assets/images/icon-dots-dark.svg';
-export const CardComponent = () => {
+import {TagComponent} from './TagComponent';
+import { useEffect, useState } from 'react';
+
+export const CardComponent = ({ bookmark }: { bookmark: any }) => {
+
+    const [tags, setTags] = useState<string[]>([]);
+
+
+    // bookmark.favicon has filename in string ends with .png. need to make preg match to get the filename and then get the corresponding image from icons object
+
+    const image = icons[bookmark.favicon.match(/[^/]+$/)[0]] || '';
+
+    useEffect(() => {
+        setTags(bookmark.tags);
+    }, [tags]);
+
   return (
     <div className="max-w-86.5 w-full min-w-84 min-h-68 rounded-lg dark:bg-neutral-800">
-
         <div className="p-4">
             <div className="flex justify-between border-b border-neutral-500 pb-4">
                 <div className="flex gap-3 items-start">
-                    <img className='w-11 h-11 rounded-lg' src={frontendMentorFavicon} alt="Frontend Mentor" />
+                    <img className='w-11 h-11 rounded-lg' src={image} alt={bookmark.title} />
                     <div className="flex flex-col">
-                        <h1 className='dark:text-white text-[20px]'>Frontendmentor</h1>
-                        <a href="http://www.frontendmentor.io" className='dark:text-neutral-100 text-[12px]'>frontendmentor.io</a>
+                        <h1 className='dark:text-white text-[20px]'>{bookmark.title}</h1>
+                        <a href={bookmark.url} className='dark:text-neutral-100 text-[12px]'>{bookmark.url}</a>
                     </div>
                 </div>
                 <button className='dark:bg-neutral-800 border flex items-center justify-center border-neutral-500 rounded-lg w-8 h-8'>
@@ -22,18 +36,14 @@ export const CardComponent = () => {
                 </button>
             </div>
             <div className="pt-4 flex gap-4 flex-col">
-                <p className='text-[14px] dark:text-neutral-100 leading-[150%]'>Improve your front-end coding skills by building real projects. Solve real-world HTML, CSS and JavaScript challenges whilst working to professional designs.</p>
+                <p className='text-[14px] dark:text-neutral-100 leading-[150%]'>
+                    {bookmark.description}
+                </p>
 
                 <div className='flex gap-2'>
-                    <div className="dark:bg-neutral-600 px-2 py-1 rounded-sm">
-                        Practice
-                    </div>
-                    <div className="dark:bg-neutral-600 px-2 py-1 rounded-sm">
-                        Learning
-                    </div>
-                    <div className="dark:bg-neutral-600 px-2 py-1 rounded-sm">
-                        Community
-                    </div>
+                    {tags.map((tag: string) => (
+                        <TagComponent key={tag} tag={tag} />
+                    ))}
                 </div>
             </div>
         </div>
