@@ -3,7 +3,7 @@ import darkHome from '../assets/images/icon-home-dark.svg';
 import darkArhive from '../assets/images/icon-archive-dark.svg';
 export const SidebarComponent = () => {
   return (
-    <aside className="min-w-74 hidden md:flex dark:bg-neutral-800 flex-col h-screen px-4 border-r dark:border-neutral-500 gap-4">
+    <aside className="min-w-74 hidden md:flex fixed dark:bg-neutral-800 flex-col h-screen px-4 border-r dark:border-neutral-500 gap-4">
         <div className="block mt-5 px-5 mb-2.5">
             <img src={logoDark} alt="Logo" />
         </div>
