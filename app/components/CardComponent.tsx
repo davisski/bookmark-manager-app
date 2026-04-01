@@ -28,7 +28,7 @@ export const CardComponent = ({ bookmark }: { bookmark: any }) => {
                     <img className='w-11 h-11 rounded-lg' src={image} alt={bookmark.title} />
                     <div className="flex flex-col">
                         <h1 className='dark:text-white text-[20px]'>{bookmark.title}</h1>
-                        <a href={bookmark.url} className='dark:text-neutral-100 text-[12px]'>{bookmark.url}</a>
+                        <a href={bookmark.url} className='dark:text-neutral-100 text-[12px]'>{bookmark.url.replace(/https?:\/\/(www\.)?/, '')}</a>
                     </div>
                 </div>
                 <button className='dark:bg-neutral-800 border flex items-center justify-center border-neutral-500 rounded-lg w-8 h-8'>
