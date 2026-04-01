@@ -34,8 +34,8 @@ export const SidebarComponent = () => {
                             relative cursor-pointer' />
                         <label htmlFor="tag1" className='text-sm dark:text-neutral-100'>AI</label>
                     </div>
-                    <div className='w-5.75 h-5.75 rounded-full border border-neutral-500 flex items-center justify-center'>
-                        <span className='dark:text-neutral-100 text-[12px]'>10</span>
+                    <div className='min-w-5.75 px-2 py-0.5 h-5.75 rounded-full border border-neutral-500 flex items-center justify-center'>
+                        <span className='dark:text-neutral-100 text-[12px]'>6</span>
                     </div>
                 </li>
                 <li className='flex justify-between'>
@@ -45,7 +45,7 @@ export const SidebarComponent = () => {
                             relative cursor-pointer' />
                         <label htmlFor="tag2" className='text-sm dark:text-neutral-100'>Community</label>
                     </div>
-                    <div className='w-5.75 h-5.75 rounded-full border border-neutral-500 flex items-center justify-center'>
+                    <div className='min-w-5.75 px-2 py-0.5 h-5.75 rounded-full border border-neutral-500 flex items-center justify-center'>
                         <span className='dark:text-neutral-100 text-[12px]'>1</span>
                     </div>
                 </li> 
