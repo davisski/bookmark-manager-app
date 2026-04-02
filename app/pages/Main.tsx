@@ -9,9 +9,10 @@ export function Main() {
       <SidebarComponent />
       <main className="ml-0 md:ml-74">
         <NavigationComponent />
-        <section className="px-8 pb-9 pt-28.5">
+        {/* pt-28.5 */}
+        <section className="px-8 pb-9 pt-22">
           <PageHeaderComponent title="All bookmarks">
-            <button className="border fixed right-10 top-28 cursor-pointer rounded-lg flex items-center justify-center w-26.75 h-10.5 border-neutral-300 dark:bg-teal-700 gap-1">
+            <button className="border cursor-pointer rounded-lg flex items-center justify-center w-26.75 h-10.5 border-neutral-300 dark:bg-teal-700 gap-1">
               <img src={darkSort} alt="Sort by" />
               <span className="dark:text-white">Sort by</span>
             </button>
