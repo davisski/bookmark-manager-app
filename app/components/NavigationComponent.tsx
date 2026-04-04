@@ -2,7 +2,10 @@ import darkHamburger from "../assets/images/icon-dark-hamburger.svg";
 import darkSearch from "../assets/images/icon-dark-search.svg";
 import darkAdd from "../assets/images/icon-add-dark.svg";
 import { UserWidgetComponent } from "./UserWidgetComponent";
+import { useBookmarks } from "~/context/BookmarkContext";
 export const NavigationComponent = () => {
+  const { setQuery } = useBookmarks();
+
   return (
     <nav className="px-8 border-b z-90 fixed bg-white dark:border-neutral-500 border-neutral-300 dark:bg-neutral-800 h-19.5 flex items-center w-[calc(100vw-var(--sidebar-width))]">
         <div className="flex items-center justify-between w-[calc(100vw-var(--sidebar-width))]">
@@ -13,7 +16,7 @@ export const NavigationComponent = () => {
 
                 <div className="relative">
                     <img src={darkSearch} alt="Search" className="absolute left-3 top-[50%] translate-y-[-50%]" />
-                    <input type="text" className="max-w-65 h-11.25 dark:bg-neutral-600 border dark:border-neutral-400 rounded-lg py-[12.5px] pr-3 pl-10" placeholder="Search by title..."  />
+                    <input onChange={(e) => setQuery(e.target.value)} type="text" className="max-w-65 h-11.25 dark:bg-neutral-600 border dark:border-neutral-400 rounded-lg py-[12.5px] pr-3 pl-10" placeholder="Search by title..."  />
                 </div>
             </div>
 
