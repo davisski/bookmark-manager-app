@@ -4,7 +4,7 @@ import darkAdd from "../assets/images/icon-add-dark.svg";
 import { UserWidgetComponent } from "./UserWidgetComponent";
 export const NavigationComponent = () => {
   return (
-    <nav className="px-8 border-b z-90 fixed dark:border-neutral-500 dark:bg-neutral-800 h-19.5 flex items-center w-[calc(100vw-var(--sidebar-width))]">
+    <nav className="px-8 border-b z-90 fixed bg-white dark:border-neutral-500 border-neutral-300 dark:bg-neutral-800 h-19.5 flex items-center w-[calc(100vw-var(--sidebar-width))]">
         <div className="flex items-center justify-between w-[calc(100vw-var(--sidebar-width))]">
             <div className="flex items-center gap-4">
                 <button className="w-11 h-11 flex md:hidden items-center justify-center border dark:border-neutral-400 rounded-sm dark:bg-neutral-800">
@@ -18,9 +18,9 @@ export const NavigationComponent = () => {
             </div>
 
             <div className="flex items-center gap-4 relative">
-                <button className="w-42.2 h-11.25 px-4 py-3.25 flex items-center justify-center border-2 cursor-pointer dark:border-neutral-300 rounded-lg dark:bg-teal-700 gap-1">
+                <button className="w-42.2 h-11.25 px-4 py-3.25 flex items-center justify-center border-2 cursor-pointer dark:border-neutral-300 rounded-lg bg-teal-700 gap-1">
                     <img src={darkAdd} alt="Add" />
-                    <span className="hidden sm:block dark:text-white">Add Bookmark</span>
+                    <span className="hidden sm:block text-white">Add Bookmark</span>
                 </button>
 
                 <UserWidgetComponent />

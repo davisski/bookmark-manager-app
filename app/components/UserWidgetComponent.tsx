@@ -3,6 +3,8 @@ import avatar from '../assets/images/image-avatar.webp';
 import darkVisit from '../assets/images/dark-visit.svg';
 import darkTheme from '../assets/images/dark-theme.svg';
 import darkSun from '../assets/images/dark-sun.svg';
+import lightSun from '../assets/images/light-sun.svg';
+import lightMoon from '../assets/images/light-moon.svg';
 import darkMoon from '../assets/images/dark-moon.svg';
 import { useTheme } from "../context/ThemeContext";
 
@@ -32,12 +34,12 @@ export const UserWidgetComponent = () => {
                         <span className="text-[14px]">Theme</span>
                     </button>
 
-                    <div className="flex items-center dark:bg-teal-700 p-0.5 rounded-sm">
+                    <div className="flex items-center bg-neutral-100 dark:bg-teal-700 p-0.5 rounded-sm">
                         <button onClick={() => toggleTheme('dark')} className={`cursor-pointer flex items-center justify-center gap-2.5 w-7.5 h-6.5 dark:focus:bg-neutral-800 rounded-sm ${theme === 'dark' ? 'bg-neutral-800' : ''}`}>
-                            <img src={darkMoon} alt="Dark Theme" className="w-3.5 h-3.5" />
+                            <img src={theme === 'dark' ? darkMoon : lightMoon} alt="Dark Theme" className="w-3.5 h-3.5" />
                         </button>
-                        <button onClick={() => toggleTheme('light')} className={`cursor-pointer flex items-center justify-center gap-2.5 w-7.5 h-6.5 dark:focus:bg-neutral-800 rounded-sm ${theme === 'light' ? 'bg-neutral-800' : ''}`}>
-                            <img src={darkSun} alt="Light Theme" className="w-3.5 h-3.5" />
+                        <button onClick={() => toggleTheme('light')} className={`cursor-pointer flex items-center justify-center gap-2.5 w-7.5 h-6.5 dark:focus:bg-neutral-800 rounded-sm ${theme === 'light' ? 'bg-white' : ''}`}>
+                            <img src={theme === 'light' ? lightSun : darkSun} alt="Light Theme" className="w-3.5 h-3.5" />
                         </button>
                     </div>
                 </div>

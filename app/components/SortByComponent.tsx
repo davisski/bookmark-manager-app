@@ -1,10 +1,13 @@
 import { useState } from "react";
 import darkCheck from "../assets/images/dark-check.svg";
 import darkSort from "../assets/images/icon-sort-dark.svg";
+import lightSort from "../assets/images/icon-sort.svg";
 import { useBookmarks } from "../context/BookmarkContext";
+import { useTheme } from "~/context/ThemeContext";
 export const SortByComponent = () => {
     const [isOpen, setIsOpen] = useState(false);
     const { sortBookmarks } = useBookmarks();
+    const { theme } = useTheme();
 
     const [selectedOption, setSelectedOption] = useState<string | undefined>(undefined);
 
@@ -26,9 +29,9 @@ export const SortByComponent = () => {
 
     return (
         <>
-            <button onClick={() => setIsOpen(!isOpen)} className="dark:focus:outline-neutral-100 focus:outline-2 focus:outline-offset-3 border cursor-pointer rounded-lg px-3 py-2.75 flex items-center justify-center min-w-26.75 h-10.5 border-neutral-300 dark:bg-teal-700 gap-1">
-                <img src={darkSort} alt="Sort by" />
-                <span className="dark:text-white">
+            <button onClick={() => setIsOpen(!isOpen)} className="dark:focus:outline-neutral-100 focus:outline-2 focus:outline-offset-3 border cursor-pointer rounded-lg px-3 py-2.75 flex items-center justify-center min-w-26.75 h-10.5 dark:border-neutral-300 border-neutral-400 bg-white dark:bg-teal-700 gap-1">
+                <img src={theme === 'dark' ? darkSort : lightSort} alt="Sort by" />
+                <span className="dark:text-white text-neutral-800">
                     {selectedOptionLabel()}
                 </span>
             </button>

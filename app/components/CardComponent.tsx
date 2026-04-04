@@ -17,11 +17,11 @@ export const CardComponent = ({ bookmark }: { bookmark: any }) => {
     }, [tags]);
 
   return (
-    <div className="max-w-86.5 w-full min-w-84 min-h-68 rounded-lg flex flex-col dark:bg-neutral-800 relative">
+    <div className="max-w-86.5 w-full min-w-84 min-h-68 bg-white rounded-lg flex flex-col dark:bg-neutral-800 relative">
         <div className="p-4 grow">
-            <div className="flex justify-between border-b border-neutral-500 pb-4">
+            <div className="flex justify-between border-b dark:border-neutral-500 border-neutral-300 pb-4">
                 <div className="flex gap-3 items-start">
-                    <img className='w-11 h-11 rounded-lg' src={image} alt={bookmark.title} />
+                    <img className='w-11 h-11 rounded-lg border-neutral-100 border' src={image} alt={bookmark.title} />
                     <div className="flex flex-col">
                         <h1 className='dark:text-white text-[20px]'>{bookmark.title}</h1>
                         <a href={bookmark.url} className='dark:text-neutral-100 text-[12px]'>{bookmark.url.replace(/https?:\/\/(www\.)?/, '')}</a>
@@ -30,7 +30,7 @@ export const CardComponent = ({ bookmark }: { bookmark: any }) => {
                 <CardDotComponent bookmark={bookmark} />
             </div>
             <div className="pt-4 flex gap-4 flex-col">
-                <p className='text-[14px] dark:text-neutral-100 leading-[150%]'>
+                <p className='text-[14px] dark:text-neutral-100 text-neutral-800 leading-[150%]'>
                     {bookmark.description}
                 </p>
 
@@ -42,7 +42,7 @@ export const CardComponent = ({ bookmark }: { bookmark: any }) => {
             </div>
         </div>
 
-        <div className="border-t px-4 py-3 dark:border-neutral-500 w-full min-h-10.25 max-h-10.25 h-full flex justify-between items-center">
+        <div className="border-t px-4 py-3 border-neutral-300 dark:border-neutral-500 w-full min-h-10.25 max-h-10.25 h-full flex justify-between items-center">
             <div className="flex gap-4">
                 <div className="flex items-center gap-1.5">
                     <img className='w-3 h-3' src={darkEye} alt="View" />
