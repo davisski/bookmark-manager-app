@@ -16,7 +16,7 @@ export const UserWidgetComponent = () => {
                 <img src={avatar} alt="User Avatar" className="w-10 h-10 block rounded-full" />
             </button>
 
-            <div className={`absolute flex flex-col justify-between top-11 right-0 min-w-62 min-h-42.75 z-[100] mt-2 w-48 bg-white border border-gray-200 dark:bg-neutral-600 dark:border-neutral-500 rounded-md shadow-lg ${isOpen ? 'block' : 'hidden'}`}>
+            <div className={`absolute flex flex-col justify-between top-11 right-0 min-w-62 min-h-42.75 z-100! mt-2 w-48 bg-white border border-gray-200 dark:bg-neutral-600 dark:border-neutral-500 rounded-md shadow-lg ${isOpen ? 'block' : 'hidden'}`}>
                 <div className="px-4 py-3">
                     <button className="flex items-center gap-3">
                         <img className="w-10 h-10" src={avatar} alt="Visit" />
