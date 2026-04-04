@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState, useMemo } from 'react';
+import React, { createContext, useContext, useState, useMemo, useEffect } from 'react';
 import bookmarksData from '../data.json';
 
 export type Bookmark = typeof bookmarksData.bookmarks[number];
@@ -15,23 +15,33 @@ interface BookmarkContextType {
 const BookmarkContext = createContext<BookmarkContextType | undefined>(undefined);
 
 export const BookmarkProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-    
-    const [bookmarks, setBookmarks] = useState<Bookmark[]>(bookmarksData.bookmarks);
+    const [bookmarks, setBookmarks] = useState<Bookmark[]>([]);
 
     const defaultSort = (bookmarks: Bookmark[]) => {
         setBookmarks(prev => {
-            return [...prev].sort((a, b) => {
+            const bMarks = [...prev].sort((a, b) => {
                 let aValue = a.pinned;
                 let bValue = b.pinned;
 
                 if (aValue === bValue) return 0;
                 return aValue < bValue ? 1 : -1;
             });
+            return bMarks;
         });
     }
 
+    useEffect(() => {
+        if (typeof window !== "undefined") {
+            const savedBarks = window.localStorage.getItem("bookmarks");
+            if (savedBarks?.length) {
+                setBookmarks(JSON.parse(savedBarks));
+            };
+            if(!savedBarks?.length) {
+                setBookmarks(bookmarksData.bookmarks);
+                window.localStorage.setItem("bookmarks", JSON.stringify(bookmarksData.bookmarks));
+            }
+        }
 
-    useMemo(() => {
         defaultSort(bookmarks);
     }, []);
 
@@ -75,6 +85,7 @@ export const BookmarkProvider: React.FC<{ children: React.ReactNode }> = ({ chil
             return [...prev];
         });
 
+        localStorage.setItem("bookmarks", JSON.stringify(bookmarks));
         defaultSort(bookmarks);
     };
 
@@ -87,6 +98,7 @@ export const BookmarkProvider: React.FC<{ children: React.ReactNode }> = ({ chil
             return [...prev];
         });
 
+        localStorage.setItem("bookmarks", JSON.stringify(bookmarks));
         defaultSort(bookmarks);
     };
 
