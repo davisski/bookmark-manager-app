@@ -9,7 +9,7 @@ import {
 
 import type { Route } from "./+types/root";
 import "./app.css";
-
+import { BookmarkProvider } from "./context/BookmarkContext";
 export const links: Route.LinksFunction = () => [
   {
     rel: "font/ttf",
@@ -36,7 +36,11 @@ export function Layout({ children }: { children: React.ReactNode }) {
 }
 
 export default function App() {
-  return <Outlet />;
+  return (
+    <BookmarkProvider>
+      <Outlet />
+    </BookmarkProvider>
+  );
 }
 
 export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {

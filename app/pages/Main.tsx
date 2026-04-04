@@ -1,6 +1,6 @@
 import { NavigationComponent } from "../components/NavigationComponent";
 import { PageHeaderComponent } from "../components/PageHeaderComponent";
-import darkSort from "../assets/images/icon-sort-dark.svg";
+import { SortByComponent } from "../components/SortByComponent";
 import { SidebarComponent } from "~/components/SidebarComponent";
 import { BookmarkGridComponent } from "~/components/BookmarkGridComponent";
 export function Main() {
@@ -12,10 +12,7 @@ export function Main() {
         {/* pt-28.5 */}
         <section className="px-8 pb-9 pt-22">
           <PageHeaderComponent title="All bookmarks">
-            <button className="border cursor-pointer rounded-lg flex items-center justify-center w-26.75 h-10.5 border-neutral-300 dark:bg-teal-700 gap-1">
-              <img src={darkSort} alt="Sort by" />
-              <span className="dark:text-white">Sort by</span>
-            </button>
+            <SortByComponent />
           </PageHeaderComponent>
 
           <div className="mt-6">
