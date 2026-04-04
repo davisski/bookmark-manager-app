@@ -1,7 +1,7 @@
 import darkHamburger from "../assets/images/icon-dark-hamburger.svg";
 import darkSearch from "../assets/images/icon-dark-search.svg";
-import avatar from "../assets/images/avatar.png";
 import darkAdd from "../assets/images/icon-add-dark.svg";
+import { UserWidgetComponent } from "./UserWidgetComponent";
 export const NavigationComponent = () => {
   return (
     <nav className="px-8 border-b z-10 fixed dark:border-neutral-500 dark:bg-neutral-800 h-19.5 flex items-center w-[calc(100vw-var(--sidebar-width))]">
@@ -17,13 +17,13 @@ export const NavigationComponent = () => {
                 </div>
             </div>
 
-            <div className="flex items-center gap-4">
+            <div className="flex items-center gap-4 relative">
                 <button className="w-42.2 h-11.25 px-4 py-3.25 flex items-center justify-center border-2 cursor-pointer dark:border-neutral-300 rounded-lg dark:bg-teal-700 gap-1">
                     <img src={darkAdd} alt="Add" />
                     <span className="hidden sm:block dark:text-white">Add Bookmark</span>
                 </button>
 
-                <img src={avatar} alt="User Avatar" className="w-10 h-10 block rounded-full" />
+                <UserWidgetComponent />
             </div>
         </div>
     </nav>
