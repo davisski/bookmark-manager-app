@@ -3,16 +3,12 @@ import darkClock from '../assets/images/icon-clock-dark.svg';
 import darkCalendar from '../assets/images/icon-calendar-dark.svg';
 import darkPin from '../assets/images/icon-pin-dark.svg';
 import { icons } from '~/utils/icons';
-import darkDots from '../assets/images/icon-dots-dark.svg';
 import {TagComponent} from './TagComponent';
 import { useEffect, useState } from 'react';
+import { CardDotComponent } from './CardDotComponent';
 
 export const CardComponent = ({ bookmark }: { bookmark: any }) => {
-
     const [tags, setTags] = useState<string[]>([]);
-
-
-    // bookmark.favicon has filename in string ends with .png. need to make preg match to get the filename and then get the corresponding image from icons object
 
     const image = icons[bookmark.favicon.match(/[^/]+$/)[0]] || '';
 
@@ -21,7 +17,7 @@ export const CardComponent = ({ bookmark }: { bookmark: any }) => {
     }, [tags]);
 
   return (
-    <div className="max-w-86.5 w-full min-w-84 min-h-68 rounded-lg flex flex-col dark:bg-neutral-800">
+    <div className="max-w-86.5 w-full min-w-84 min-h-68 rounded-lg flex flex-col dark:bg-neutral-800 relative">
         <div className="p-4 grow">
             <div className="flex justify-between border-b border-neutral-500 pb-4">
                 <div className="flex gap-3 items-start">
@@ -31,9 +27,7 @@ export const CardComponent = ({ bookmark }: { bookmark: any }) => {
                         <a href={bookmark.url} className='dark:text-neutral-100 text-[12px]'>{bookmark.url.replace(/https?:\/\/(www\.)?/, '')}</a>
                     </div>
                 </div>
-                <button className='dark:bg-neutral-800 border flex items-center justify-center border-neutral-500 rounded-lg w-8 h-8'>
-                    <img className='w-5 h-5' src={darkDots} alt="Options" />
-                </button>
+                <CardDotComponent bookmark={bookmark} />
             </div>
             <div className="pt-4 flex gap-4 flex-col">
                 <p className='text-[14px] dark:text-neutral-100 leading-[150%]'>
