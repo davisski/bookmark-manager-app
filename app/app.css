@@ -4,6 +4,8 @@
   --sidebar-width: 296px;
 }
 
+@custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
+
 .dark{
   --color-neutral-900: #001414;
   --color-neutral-800: #001F1F;

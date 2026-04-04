@@ -9,7 +9,6 @@ export function Main() {
       <SidebarComponent />
       <main className="ml-0 md:ml-74">
         <NavigationComponent />
-        {/* pt-28.5 */}
         <section className="px-8 pb-9 pt-22">
           <PageHeaderComponent title="All bookmarks">
             <SortByComponent />

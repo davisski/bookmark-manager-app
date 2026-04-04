@@ -10,6 +10,9 @@ import {
 import type { Route } from "./+types/root";
 import "./app.css";
 import { BookmarkProvider } from "./context/BookmarkContext";
+import { ThemeProvider, useTheme } from "./context/ThemeContext";
+import { useEffect } from "react";
+
 export const links: Route.LinksFunction = () => [
   {
     rel: "font/ttf",
@@ -35,11 +38,22 @@ export function Layout({ children }: { children: React.ReactNode }) {
   );
 }
 
+function HtmlThemeEffect() {
+  const { theme } = useTheme();
+  useEffect(() => {
+    document.documentElement.setAttribute('data-theme', theme);
+  }, [theme]);
+  return null;
+}
+
 export default function App() {
   return (
-    <BookmarkProvider>
-      <Outlet />
-    </BookmarkProvider>
+    <ThemeProvider>
+      <BookmarkProvider>
+        <HtmlThemeEffect />
+        <Outlet />
+      </BookmarkProvider>
+    </ThemeProvider>
   );
 }
 
