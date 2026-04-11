@@ -1,4 +1,4 @@
-import {useState} from "react";
+import {useState, useEffect, useRef} from "react";
 import avatar from '../assets/images/image-avatar.webp';
 import darkVisit from '../assets/images/dark-visit.svg';
 import darkTheme from '../assets/images/dark-theme.svg';
@@ -10,15 +10,32 @@ import { useTheme } from "../context/ThemeContext";
 
 export const UserWidgetComponent = () => {
     const [isOpen, setIsOpen] = useState(false);
-
+    const userWidgetDropdown = useRef<HTMLDivElement>(null);
     const { theme, toggleTheme } = useTheme();
+
+    const handleDropdownClick = (e: React.MouseEvent<HTMLDivElement>) => {
+        e.stopPropagation();
+        const target = e.target as HTMLElement;
+
+        if(isOpen && target.offsetParent?.id !== userWidgetDropdown.current?.id) {
+            setIsOpen(false);
+        }
+    }
+
+    useEffect(() => {
+        document.addEventListener('click', handleDropdownClick as any);
+        
+        return () => {
+            document.removeEventListener('click', handleDropdownClick as any);
+        }
+    }, [isOpen]);
     return (
         <>
             <button onClick={() => setIsOpen(!isOpen)} className='outline-2 dark:focus:outline-neutral-100 focus:outline-neutral-500 cursor-pointer rounded-full focus:outline-offset-2'>
                 <img src={avatar} alt="User Avatar" className="w-10 h-10 block rounded-full" />
             </button>
 
-            <div className={`absolute flex flex-col justify-between top-11 right-0 min-w-62 min-h-42.75 z-100! mt-2 w-48 bg-white border border-gray-200 dark:bg-neutral-600 dark:border-neutral-500 rounded-md shadow-lg ${isOpen ? 'block' : 'hidden'}`}>
+            <div ref={userWidgetDropdown} id='user-widget-dropdown' className={`absolute flex flex-col justify-between top-11 right-0 min-w-62 min-h-42.75 z-100! mt-2 w-48 bg-white border border-gray-200 dark:bg-neutral-600 dark:border-neutral-500 rounded-md shadow-lg ${isOpen ? 'block' : 'hidden'}`}>
                 <div className="px-4 py-3">
                     <button className="flex items-center gap-3">
                         <img className="w-10 h-10" src={avatar} alt="Visit" />
