@@ -11,6 +11,7 @@ import type { Route } from "./+types/root";
 import "./app.css";
 import { BookmarkProvider } from "./context/BookmarkContext";
 import { ThemeProvider, useTheme } from "./context/ThemeContext";
+import { ModalProvider } from "./context/ModalContext";
 import { useEffect } from "react";
 
 export const links: Route.LinksFunction = () => [
@@ -50,8 +51,10 @@ export default function App() {
   return (
     <ThemeProvider>
       <BookmarkProvider>
-        <HtmlThemeEffect />
-        <Outlet />
+        <ModalProvider>
+          <HtmlThemeEffect />
+          <Outlet />
+        </ModalProvider>
       </BookmarkProvider>
     </ThemeProvider>
   );

@@ -1,19 +1,6 @@
 import React, { createContext, useContext, useState, useMemo, useEffect } from 'react';
 import bookmarksData from '../data.json';
-
-export type Bookmark = typeof bookmarksData.bookmarks[number];
-
-interface BookmarkContextType {
-    bookmarks: Bookmark[];
-    query: string;
-    setBookmarks: React.Dispatch<React.SetStateAction<Bookmark[]>>;
-    setQuery: React.Dispatch<React.SetStateAction<string>>;
-    sortBookmarks: (sortBy: 'createdAt' | 'lastVisited' | 'visitCount', direction?: 'asc' | 'desc') => void;
-    pinBookmark: (id: string) => void;
-    unpinBookmark: (id: string) => void;
-    defaultSort: (bookmarks: Bookmark[]) => void;
-    filterBookmarks: (query: string) => Bookmark[];
-}
+import type { Bookmark, BookmarkContextType } from '~/interfaces';
 
 const BookmarkContext = createContext<BookmarkContextType | undefined>(undefined);
 
@@ -109,13 +96,37 @@ export const BookmarkProvider: React.FC<{ children: React.ReactNode }> = ({ chil
         localStorage.setItem("bookmarks", JSON.stringify(bookmarks));
         defaultSort(bookmarks);
     };
+
+    const addBookmark = (bookmark: Bookmark) => {
+        setBookmarks(prev => [...prev, bookmark]);
+        localStorage.setItem("bookmarks", JSON.stringify([...JSON.parse(localStorage.getItem("bookmarks") || "[]"), bookmark]));
+        defaultSort(bookmarks);
+    };
+
+    const generateId = (): string => {
+        const existingIds = bookmarks.map(b => b.id);
+
+        const renderChars = () => {
+            return Math.random().toString().substr(2, 3);
+        }
+
+        const randomChars = renderChars();
+        let newId = 'bm-' + randomChars;
+
+        while (existingIds.includes(newId)) {
+            newId = 'bm-' + renderChars();
+        }
+
+        return newId;
+    }
+
     const filterBookmarks = (query: string) => {
         const lowerQuery = query.toLowerCase();
-        return bookmarks.filter(b => b.title.toLowerCase().includes(lowerQuery) || b.url.toLowerCase().includes(lowerQuery) ||
+        return bookmarks.filter(b => b.title && b.title.toLowerCase().includes(lowerQuery) || b.url && b.url.toLowerCase().includes(lowerQuery) ||
             (b.tags && b.tags.some(tag => tag.toLowerCase().includes(lowerQuery))));
     }
 
-    const value = useMemo(() => ({ bookmarks, setBookmarks, sortBookmarks, pinBookmark, unpinBookmark, defaultSort, filterBookmarks, query, setQuery }), [bookmarks]);
+    const value = useMemo(() => ({ bookmarks, setBookmarks, sortBookmarks, pinBookmark, unpinBookmark, defaultSort, filterBookmarks, query, setQuery, addBookmark, generateId }), [bookmarks]);
 
     return <BookmarkContext.Provider value={value}>{children}</BookmarkContext.Provider>;
     
