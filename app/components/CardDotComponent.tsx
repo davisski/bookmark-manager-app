@@ -1,5 +1,5 @@
 
-import { useState } from 'react';
+import { useState, useEffect, useRef} from 'react';
 import darkDots from '../assets/images/icon-dots-dark.svg';
 import darkVisit from '../assets/images/dark-visit.svg';
 import darkCopy from '../assets/images/dark-copy.svg';
@@ -15,6 +15,7 @@ export const CardDotComponent = ({ bookmark }: { bookmark: any }) => {
     const [isOpen, setIsOpen] = useState(false);
     const { pinBookmark, unpinBookmark } = useBookmarks();
     const { theme } = useTheme();
+    const cardDotComponent = useRef<HTMLDivElement>(null);
 
     let options = [
         { label: "Visit", icon: darkVisit, method: "visit" },
@@ -83,12 +84,27 @@ export const CardDotComponent = ({ bookmark }: { bookmark: any }) => {
         }
     }
 
+    useEffect(() => {
+        const handleClickOutside = (event: MouseEvent) => {
+            const target = event.target as HTMLElement;
+            if (!cardDotComponent.current?.contains(target)) {
+                setIsOpen(false);
+            }
+        };
+
+        document.addEventListener('mousedown', handleClickOutside);
+
+        return () => {
+            document.removeEventListener('mousedown', handleClickOutside);
+        };
+    }, []);
+
     return (
         <>
             <button onClick={() => setIsOpen(!isOpen)} className='cursor-pointer dark:focus:outline-neutral-100 focus:outline-2 focus:outline-offset-3 dark:bg-neutral-800 border flex items-center justify-center dark:border-neutral-500 border-neutral-400 rounded-lg w-8 h-8'>
                 <img className='w-5 h-5' src={theme == 'dark' ? darkDots : dotmMenu} alt="Options" />
             </button>
-            <div className={`absolute top-13 right-4 overflow-hidden bg-white dark:bg-neutral-600 border border-gray-300 dark:border-neutral-500 rounded-lg shadow-lg min-w-50 min-h-33 p-2 z-10 ${isOpen ? "block" : "hidden"}`}>
+            <div ref={cardDotComponent} className={`absolute top-13 right-4 overflow-hidden bg-white dark:bg-neutral-600 border border-gray-300 dark:border-neutral-500 rounded-lg shadow-lg min-w-50 min-h-33 p-2 z-10 ${isOpen ? "block" : "hidden"}`}>
                 <ul className="flex flex-col justify-between min-h-33">
                     {options.map((option) => (
                         <li onClick={() => handleOptionSelect(option.method)} key={option.method} className="px-4 py-2 hover:bg-gray-100 dark:text-neutral-100 cursor-pointer dark:hover:bg-neutral-800
