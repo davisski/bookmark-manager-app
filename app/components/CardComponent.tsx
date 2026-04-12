@@ -10,7 +10,7 @@ import { CardDotComponent } from './CardDotComponent';
 export const CardComponent = ({ bookmark }: { bookmark: any }) => {
     const [tags, setTags] = useState<string[]>([]);
 
-    const image = icons[bookmark.favicon.match(/[^/]+$/)[0]] || '';
+    const image = bookmark.favicon ? icons[bookmark.favicon.match(/[^/]+$/)[0]] : bookmark.url ? `https://www.google.com/s2/favicons?domain=${new URL(bookmark.url).hostname}` : '';
 
     useEffect(() => {
         setTags(bookmark.tags);

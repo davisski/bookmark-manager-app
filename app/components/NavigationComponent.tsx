@@ -3,8 +3,10 @@ import darkSearch from "../assets/images/icon-dark-search.svg";
 import darkAdd from "../assets/images/icon-add-dark.svg";
 import { UserWidgetComponent } from "./UserWidgetComponent";
 import { useBookmarks } from "~/context/BookmarkContext";
+import { useModal } from "~/context/ModalContext";
 export const NavigationComponent = () => {
-  const { setQuery } = useBookmarks();
+    const { setQuery } = useBookmarks();
+    const { openModal } = useModal();
 
   return (
     <nav className="px-8 border-b z-90 fixed bg-white dark:border-neutral-500 border-neutral-300 dark:bg-neutral-800 h-19.5 flex items-center w-[calc(100vw-var(--sidebar-width))]">
@@ -21,7 +23,7 @@ export const NavigationComponent = () => {
             </div>
 
             <div className="flex items-center gap-4 relative">
-                <button className="w-42.2 h-11.25 px-4 py-3.25 flex items-center justify-center border-2 cursor-pointer dark:border-neutral-300 rounded-lg bg-teal-700 gap-1">
+                <button onClick={openModal} className="w-42.2 h-11.25 px-4 py-3.25 flex items-center justify-center border-2 cursor-pointer dark:border-neutral-300 rounded-lg bg-teal-700 gap-1">
                     <img src={darkAdd} alt="Add" />
                     <span className="hidden sm:block text-white">Add Bookmark</span>
                 </button>

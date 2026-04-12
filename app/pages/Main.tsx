@@ -3,6 +3,8 @@ import { PageHeaderComponent } from "../components/PageHeaderComponent";
 import { SortByComponent } from "../components/SortByComponent";
 import { SidebarComponent } from "~/components/SidebarComponent";
 import { BookmarkGridComponent } from "~/components/BookmarkGridComponent";
+import { BookmarkModal } from "../components/BookmarkModal";
+
 export function Main() {
   return (
     <>
@@ -19,6 +21,7 @@ export function Main() {
           </div>
         </section>
       </main>
+      <BookmarkModal />
     </>
   );
 }
